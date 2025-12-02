@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Clock Suite — World Clock, Alarm, Timer, Stopwatch, Bedtime</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>Clock Suite</h1>
+      <nav class="tabs" role="tablist">
+        <button class="tab active" data-tab="world">World Clock</button>
+        <button class="tab" data-tab="alarm">Alarms</button>
+        <button class="tab" data-tab="timer">Timer</button>
+        <button class="tab" data-tab="stopwatch">Stopwatch</button>
+        <button class="tab" data-tab="bedtime">Bedtime</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="world" class="panel active" role="tabpanel">
+        <h2>World Clock</h2>
+        <div class="city-add">
+          <select id="tzSelect"></select>
+          <button id="addCity">Add city</button>
+        </div>
+        <ul id="cities" class="cards"></ul>
+        <button></button>
+      </section>
+
+      <section id="stopwatch" class="panel" role="tabpanel">
+        <h2>Stopwatch</h2>
+        <div class="display" id="sw-display">00:00:00.000</div>
+        <div class="controls">
+            <button id="sw-start">Start</button>
+            <button id="sw-stop" disabled>Stop</button>
+            <button id="sw-lap" disabled>Lap</button>
+            <button id="sw-reset">Reset</button>
+        </div>
+        <ol id="sw-laps" class="laps"></ol>
+      </section>
+        <!--timer-->
+        <section id="timer" class="panel" hidden>
+            <h2>Timer</h2>
+            <div class="timer-form">
+                <input id="timer-min" type="number" min="0" placeholder="Minutes" />
+                <input id="timer-sec" type="number" min="0" max="59" placeholder="seconds" />
+            </div>
+            <div class="display" id="timer-display">00:00</div>
+            <div class="controls">
+                <button id="timer-start">Start</button>
+                <button id="timer-pause" disabled>pause</button>
+                <button id="timer-reset">Reset</button>
+            </div>
+        </section>
+        <!--ALARMS-->
+        <section id="alarm" class="panel" hidden>
+            <h2>Alarms</h2>
+            <form id="alarm-form" class="alarm-form">
+                <input id="alarm-label" type="text" placeholder="label (optional)">
+                <input id="alarm-time" type="time" required>
+                <select id="alarm-recur">
+                    <option value="once">Once</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekdays">Weekdays</option>
+                </select>
+                <button type="submit">Add Alarm</button>
+            </form>
+            <ul id="alarm-list" class="alarm-list"></ul>
+        </section>
+        <!--BEDTIME-->
+        <section id="bedtime" class="panel">
+            <h2>Bedtime</h2>
+            <div class="bedtime-form">
+                <lebel>Slep time</lebel>
+                <input id="sleep-time" type="time">
+                <label>wake time</label>
+                <input id="wake-time" type="time">
+                <button id="save-bedtime">Save</button>
+                <button id="clear-bedtime" class="ghost">Clear</button>
+            </div>
+            <p id="bedtime-info" class="muted">No bedtime set.</p>
+        </section>
+        </main>
+        <footer class="footer">
+            <small>Built with ❤️ - customizable. open dev tools to tweek styles.</small>
+        </footer>
+        <!--embedded alarm sound (short beep)-->
+        <audio id="alarm-sound">
+            <source src="data:audio/mpeg;base64,//uQZAAAAAAAAAAAAAAAAAAAA..." type="audio/mpeg">
+            <!--note: replace base64 with a real small beep if you want louder sound-->  
+        </audio>
+        <script src="script.js"></script>
+</body>
+</html>
